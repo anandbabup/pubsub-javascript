@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PubSub</title>
+    <script src="pubsub.js"></script>
+</head>
+
+<body>
+    <script>
+        var ps = pubSub();
+        const unsubscribe1 = ps.subscribe('food', function (data) {
+            console.log(`Received some food: ${data}`)
+        })
+
+        const unsubscribe2 = ps.subscribe('food', function (data) {
+            console.log(`Received some food: ${data}`)
+        })
+
+        const unsubscribe3 = ps.subscribe('food', function (data) {
+            console.log(`Received some food: ${data}`)
+        })
+    
+
+        ps.publish("food","Mutton Biryani")
+
+        unsubscribe1.unsubscribe()
+        ps.publish("food","Mutton Sukka")
+        
+    </script>
+
+    See the console.
+</body>
+
+</html>
